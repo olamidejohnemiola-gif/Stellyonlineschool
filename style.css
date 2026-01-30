@@ -1,0 +1,663 @@
+/* =========================================
+   1. COLOR SCHEME & GLOBAL RESET
+   ========================================= */
+:root {
+    --primary: #5e17eb;       /* Modern Purple */
+    --secondary: #00d2ff;     /* Professional Blue */
+    --accent: #ffb703;        /* Vibrant Gold */
+    --dark: #0f172a;          /* Deep Navy */
+    --white: #ffffff;
+    --soft-bg: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* UPGRADE: Rotating & Sparkling Background applied to Body */
+    background: linear-gradient(45deg, #0f172a, #5e17eb, #00d2ff, #0f172a);
+    background-size: 400% 400%;
+    animation: rotateGradient 15s ease infinite, sparkleBody 8s ease-in-out infinite;
+}
+
+/* Background Animations */
+@keyframes rotateGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes sparkleBody {
+    0%, 100% { filter: brightness(100%); }
+    50% { filter: brightness(115%) contrast(105%); }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* =========================================
+   2. NAVBAR (CENTRALIZED VERSION)
+   ========================================= */
+.navbar {
+    /* UPGRADE: Glassmorphism Navbar */
+    background: rgba(15, 23, 42, 0.8); /* Darker for better contrast */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    height: auto; /* Changed from 115px to auto to allow stacking */
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-flex {
+    display: flex;
+    flex-direction: column; /* THIS STACKS EVERYTHING VERTICALLY */
+    align-items: center;    /* THIS CENTERS EVERYTHING HORIZONTALLY */
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    gap: 15px; /* Spacing between logo, search, and links */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-clean {
+    height: 70px; /* Slightly smaller to fit the stack better */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Centralizing the Search Bar */
+.search-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 20px 0 0 20px;
+    border: none;
+}
+
+/* Centralizing the Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+}
+
+/* IMPORTANT: Push the Hero down so it doesn't hide under the new taller menu */
+.hero {
+    padding-top: 280px !important; 
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    .hero {
+        padding-top: 320px !important;
+    }
+}
+/* =========================================
+   3. HERO SECTION (CENTRALIZED)
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers everything horizontally */
+    padding-top: 180px;      /* Space for your new tall header */
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--white);
+    clip-path: ellipse(150% 100% at 50% 0%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;      /* Centers the text lines */
+}
+
+.hero-flex {
+    display: flex;
+    flex-direction: column;  /* Stacks text and image vertically */
+    align-items: center;     /* Horizontal center */
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Keeps your text exactly as it was, just centered */
+.hero h1, .tagline, .btn-gold {
+    margin-left: auto;
+    margin-right: auto;
+}
+.tagline {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.btn-gold {
+    background: var(--accent);
+    color: var(--dark);
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-block;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(255,183,3,0.3);
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px var(--accent);
+}
+
+.main-laptop-img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.4)); /* Blue Aura */
+}
+
+/* =========================================
+   4. SECTIONS & FLYER (WITH GLASS EFFECTS)
+   ========================================= */
+.section {
+    padding: 100px 0;
+}
+
+/* Upgrade section backgrounds to Glassmorphism */
+.bg-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--white);
+}
+
+.flyer-flex {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.site-flyer {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 5px solid rgba(255, 255, 255, 0.2);
+}
+
+.motto {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.flyer-list {
+    list-style: none;
+    margin-top: 20px;
+    color: white;
+}
+
+.flyer-list i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   5. CARDS & ICON BOXES (CHARGING STYLE)
+   ========================================= */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card,
+.testimonial-card {
+    /* Glassmorphism Cards */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    text-align: center;
+    transition: 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3); /* Charging blue glow */
+    border-color: var(--secondary);
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    border-radius: 18px;
+    color: var(--white);
+}
+
+/* Keep original icon backgrounds */
+.about-1 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.about-2 { background: linear-gradient(135deg, #5ee7df, #b490ca); }
+.about-3 { background: linear-gradient(135deg, #f6d365, #fda085); }
+
+.math-bg { background: #ff5e57; }
+.english-bg { background: #4834d4; }
+.science-bg { background: #22a6b3; }
+.coding-bg { background: #130f40; }
+.lang-bg { background: #f0932b; }
+.writing-bg { background: #eb4d4b; }
+.social-bg { background: #6ab04c; }
+
+.reveal { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* =========================================
+   6. CURRICULA & REVIEWS (UPGRADED)
+   ========================================= */
+.curricula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.curriculum-item {
+    background: rgba(94, 23, 235, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--primary);
+    color: var(--white);
+    padding: 25px 15px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: 700;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.curriculum-item:hover {
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.testimonial-card {
+    border: 2px solid var(--accent) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    transform: translateY(30px) scale(1.05);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #eee;
+}
+
+.reviewer-name {
+    color: var(--accent);
+}
+
+/* =========================================
+   10. GALLERY STYLES (PRESERVED)
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    height: 250px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 4px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+}
+
+/* Lightbox Overlay (Preserved) */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   FAQ STYLES (PRESERVED & INTEGRATED)
+   ========================================= */
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent); /* Matches charging theme */
+    transition: 0.3s;
+}
+
+.faq-item h4 {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: #fff;        
+    margin: 0;
+}
+
+.faq-item p {
+    display: none;
+    margin-top: 15px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.faq-item.active {
+    background: rgba(255, 183, 3, 0.1);
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.2);
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 80px 0 0;
+}
+
+/* =========================================
+   8. BACK TO TOP (PRESERVED)
+   ========================================= */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--accent);
+    color: var(--dark);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 20px var(--accent);
+}
+@media (max-width: 768px) {
+    /* Allow navbar height to grow with content on mobile */
+    .navbar {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .nav-flex {
+        flex-direction: column; /* Stack logo, search, and menu button */
+        gap: 10px;
+    }
+
+    /* Fix the search bar from pushing links off-screen */
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-container input {
+        width: 80%;
+    }
+
+    /* Adjust hero padding to account for the now taller navbar */
+    .hero {
+        padding-top: 160px; 
+        min-height: auto; /* Prevents hero from being forced too tall */
+    }
+}
+/* This class is added by JavaScript to make hidden items appear */
+.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+}
+@media (max-width: 768px) {
+    /* Stop the cards from scaling up, which causes them to overlap or overflow */
+    .testimonial-card, 
+    .testimonial-card.reveal {
+        transform: scale(1) translateY(0) !important;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    /* Ensure the grid doesn't force a height that cuts off the footer */
+    .card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Fix footer overlapping */
+    footer {
+        padding: 40px 0 20px;
+        margin-top: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+}
+/* =========================================
+   STICKER ANIMATIONS (FRONT LAYER)
+   ========================================= */
+
+.sticker-container.front-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* z-index: 9999 ensures they cover EVERYTHING including the navbar */
+    z-index: 9999; 
+    pointer-events: none; /* Keep this so users can still click buttons behind the emojis */
+    overflow: hidden;
+}
+
+.sticker {
+    position: absolute;
+    font-size: 4rem; /* Made them slightly bigger */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    opacity: 0.9; /* Higher opacity so they look like solid stickers */
+    user-select: none;
+}
+
+/* Positioning - Spaced out across the whole screen */
+.sticker:nth-child(1) { top: 10%; left: 10%; }
+.sticker:nth-child(2) { top: 25%; right: 15%; }
+.sticker:nth-child(3) { top: 50%; left: 5%; }
+.sticker:nth-child(4) { bottom: 15%; right: 10%; }
+.sticker:nth-child(5) { top: 70%; left: 20%; }
+.sticker:nth-child(6) { bottom: 30%; left: 40%; }
+
+/* --- ANIMATION PHYSICS --- */
+
+/* Bouncing */
+.bounce {
+    animation: bounce 3s ease-in-out infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-40px) scale(1.1); }
+}
+
+/* Dancing/Wiggling */
+.dance {
+    animation: dance 2.5s ease-in-out infinite;
+}
+@keyframes dance {
+    0%, 100% { transform: rotate(-15deg) translateX(0); }
+    50% { transform: rotate(15deg) translateX(15px); }
+}
+
+/* Floating/Alt Bounce */
+.bounce-alt {
+    animation: bounceAlt 6s linear infinite;
+}
+@keyframes bounceAlt {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -60px); }
+}
+
+/* Wiggle/Alt Dance */
+.dance-alt {
+    animation: danceAlt 4s ease-in-out infinite;
+}
+@keyframes danceAlt {
+    0%, 100% { transform: skew(0deg); }
+    50% { transform: skew(15deg) rotate(5deg); }
+}
+
+/* =========================================
+   LIFE AT STELLY - SLIDESHOW STYLES
+   ========================================= */
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+}
+
+.mySlides {
+    display: none; /* Hidden by default */
+}
+
+.mySlides img {
+    height: 450px; /* Consistent height */
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.caption {
+    color: var(--white);
+    font-size: 1.2rem;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.7);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fadeTransition;
+    animation-duration: 2s;
+}
+
+@keyframes fadeTransition {
+    from { opacity: 0.4; transform: scale(1.05); } 
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .mySlides img { height: 300px; }
+}
