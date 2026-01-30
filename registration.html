@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration | Stelly Online School</title>
+  <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <img src="logo.png" alt="Stelly Logo" class="logo-clean" style="height: 80px; margin-bottom: 10px;" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
+  <h1>Stelly Online School</h1>
+  <p>Student Registration Form</p>
+</header>
+
+<section class="form-container">
+
+<form action="https://formspree.io/f/xnjvnwll" method="POST">
+    <input type="hidden" name="_next" value="https://stellyonlineschool.netlify.app/index.html">
+  <!-- ================= STUDENT INFO ================= -->
+  <h2>Student Information</h2>
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="student.png" alt="Registration Illustration" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+</div>
+
+<div class="form-group">
+  <label>Full Name *</label>
+  <input type="text" name="student_name" required>
+</div>
+  <div class="form-group">
+    <label>Date of Birth *</label>
+    <input type="date" name="dob" required>
+  </div>
+
+  <div class="form-group">
+    <label>Gender *</label>
+    <select name="gender" required>
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+
+  <!-- ================= GRADE LEVEL ================= -->
+  <div class="form-group">
+    <label>Grade Level *</label>
+    <select name="grade" required>
+      <option value="">Select Grade</option>
+      <option>Pre-K</option>
+      <option>Kindergarten</option>
+      <option>Grade 1</option>
+      <option>Grade 2</option>
+      <option>Grade 3</option>
+      <option>Grade 4</option>
+      <option>Grade 5</option>
+      <option>Grade 6</option>
+      <option>Grade 7</option>
+      <option>Grade 8</option>
+      <option>Grade 9</option>
+      <option>Grade 10</option>
+      <option>Grade 11</option>
+      <option>Grade 12</option>
+      <option>College</option>
+      <option>University</option>
+      <option>Adult Learning</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>If Other, please specify</label>
+    <input type="text" name="grade_other">
+  </div>
+
+  <!-- ================= CURRICULUM ================= -->
+  <h2>Preferred Curriculum *</h2>
+  <div class="form-group checkbox-group">
+    <label><input type="checkbox" name="curriculum[]" value="British"> British Curriculum</label>
+    <label><input type="checkbox" name="curriculum[]" value="Nigerian"> Nigerian Curriculum</label>
+    <label><input type="checkbox" name="curriculum[]" value="Australian"> Australian Curriculum</label>
+    <label><input type="checkbox" name="curriculum[]" value="Ontario"> Ontario Curriculum</label>
+    <label><input type="checkbox" name="curriculum[]" value="US"> US Curriculum</label>
+    <label><input type="checkbox" name="curriculum[]" value="EYFS"> EYFS Curriculum</label>
+  </div>
+
+  <!-- ================= SUBJECTS ================= -->
+  <h2>Subjects Interested In *</h2>
+  <div class="form-group checkbox-group">
+    <label><input type="checkbox" name="subjects[]" value="Math"> Mathematics</label>
+    <label><input type="checkbox" name="subjects[]" value="English"> English</label>
+    <label><input type="checkbox" name="subjects[]" value="Science"> Science</label>
+    <label><input type="checkbox" name="subjects[]" value="Coding"> Coding</label>
+    <label><input type="checkbox" name="subjects[]" value="Language"> Language</label>
+    <label><input type="checkbox" name="subjects[]" value="Creative Writing"> Creative Writing</label>
+  </div>
+
+  <div class="form-group">
+    <label>If Language, specify (French, Spanish, African etc)</label>
+    <input type="text" name="language_specify">
+  </div>
+
+  <!-- ================= PARENT INFO ================= -->
+  <h2>Parent / Guardian Information</h2>
+  <div class="form-group">
+    <label>Parent / Guardian Full Name *</label>
+    <input type="text" name="parent_name" required>
+  </div>
+
+  <div class="form-group">
+    <label>Phone Number *</label>
+    <input type="tel" name="phone" required>
+  </div>
+
+  <div class="form-group">
+    <label>Email Address *</label>
+    <input type="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label>Country *</label>
+    <select name="country" required>
+      <option value="">Select Country</option>
+      <option>Nigeria</option>
+      <option>Ghana</option>
+      <option>UK</option>
+      <option>USA</option>
+      <option>Canada</option>
+      <option>Australia</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>If Other, please specify</label>
+    <input type="text" name="country_other">
+  </div>
+
+  <!-- ================= EXPECTATION ================= -->
+  <h2>Expectation of Child / Student *</h2>
+  <div class="form-group">
+    <textarea name="expectation" rows="5" required
+      placeholder="Tell us what you expect your child or yourself to gain from Stelly Online School..."></textarea>
+  </div>
+
+  <!-- ================= HOW DID YOU HEAR ================= -->
+  <h2>How did you hear about us?</h2>
+  <div class="form-group">
+    <select name="referral">
+      <option>Facebook</option>
+      <option>WhatsApp</option>
+      <option>Instagram</option>
+      <option>Referral</option>
+      <option>Website</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>If Other, specify</label>
+    <input type="text" name="referral_other">
+  </div>
+
+  <!-- ================= TERMS ================= -->
+  <div class="form-group terms">
+    <label>
+      <input type="checkbox" required>
+      I confirm that the information provided is correct.
+    </label>
+  </div>
+
+  <!-- ================= SUBMIT ================= -->
+  <div class="form-group submit-box">
+    <button type="submit">Submit Registration</button>
+  </div>
+</form>
+
+</section>
+
+<footer>
+  <p>Created with ❤️ by Wealth Quest Nest</p>
+</footer>
+<!-- ================================
+     LINK JS FILE
+================================ -->
+<script src="js/registration.js"></script>
+</body>
+</html>
